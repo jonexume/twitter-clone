@@ -30,16 +30,16 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="w-full max-w-sm space-y-6 p-8">
-        <div className="flex flex-col items-center gap-2">
-          <Bird className="h-10 w-10 text-sky-500" />
-          <h1 className="text-2xl font-bold">Sign in to Twitter</h1>
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <div className="w-full max-w-sm space-y-6">
+        <div className="flex flex-col items-center gap-3">
+          <Bird className="h-12 w-12 text-sky-500" />
+          <h1 className="text-3xl font-bold tracking-tight">Sign in to Chirp</h1>
         </div>
 
         <button
           onClick={handleGoogle}
-          className="w-full flex items-center justify-center gap-2 rounded-full border border-border py-2.5 text-sm font-medium hover:bg-muted transition-colors"
+          className="w-full flex items-center justify-center gap-3 rounded-2xl border border-border py-3 text-sm font-semibold hover:bg-muted transition-all duration-200 active:scale-[0.98] shadow-sm"
         >
           <svg className="h-4 w-4" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -55,21 +55,21 @@ export default function LoginPage() {
           <div className="relative flex justify-center text-xs text-muted-foreground"><span className="bg-background px-2">or</span></div>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-3">
           <input
             type="email" value={email} onChange={e => setEmail(e.target.value)}
             placeholder="Email" required
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full rounded-2xl border border-border bg-muted px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition-all duration-200"
           />
           <input
             type="password" value={password} onChange={e => setPassword(e.target.value)}
             placeholder="Password" required
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full rounded-2xl border border-border bg-muted px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition-all duration-200"
           />
-          {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && <p className="text-sm text-red-500 font-medium">{error}</p>}
           <button
             type="submit" disabled={loading}
-            className="w-full rounded-full bg-sky-500 py-2.5 text-sm font-bold text-white hover:bg-sky-600 disabled:opacity-50 transition-colors"
+            className="w-full rounded-2xl bg-sky-500 hover:bg-sky-400 active:scale-[0.98] py-3 text-sm font-semibold text-white disabled:opacity-50 transition-all duration-200 shadow-lg shadow-sky-500/25"
           >
             {loading ? "Signing in…" : "Sign in"}
           </button>
@@ -77,7 +77,7 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-muted-foreground">
           No account?{" "}
-          <Link href="/auth/signup" className="text-sky-500 hover:underline">Sign up</Link>
+          <Link href="/auth/signup" className="text-sky-500 font-semibold hover:underline">Sign up</Link>
         </p>
       </div>
     </div>

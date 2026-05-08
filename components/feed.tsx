@@ -81,8 +81,8 @@ export function Feed({ userId, username }: FeedProps) {
 
   return (
     <div>
-      <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b border-border px-4 py-3">
-        <h1 className="font-bold text-xl">Home</h1>
+      <div className="sticky top-0 z-10 bg-background/75 backdrop-blur-xl border-b border-border/50 px-4 py-3.5">
+        <h1 className="font-bold text-xl tracking-tight">Home</h1>
       </div>
 
       <PostComposer userId={userId} username={username} onPost={invalidate} />

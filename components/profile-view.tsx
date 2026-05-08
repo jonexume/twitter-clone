@@ -111,13 +111,13 @@ export function ProfileView({ username, currentUserId }: ProfileViewProps) {
   return (
     <div>
       {/* Sticky header */}
-      <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b border-border px-4 py-3 flex items-center gap-6">
-        <button onClick={() => router.back()} className="p-2 rounded-full hover:bg-muted transition-colors">
+      <div className="sticky top-0 z-10 bg-background/75 backdrop-blur-xl border-b border-border/50 px-4 py-3 flex items-center gap-6">
+        <button onClick={() => router.back()} className="p-2 rounded-full hover:bg-muted transition-all duration-200 active:scale-95">
           <ArrowLeft className="h-5 w-5" />
         </button>
         <div>
-          <h1 className="font-bold text-xl leading-tight">{profile.display_name ?? profile.username}</h1>
-          <p className="text-sm text-muted-foreground">{posts.length} posts</p>
+          <h1 className="font-bold text-xl leading-tight tracking-tight">{profile.display_name ?? profile.username}</h1>
+          <p className="text-xs text-muted-foreground">{posts.length} posts</p>
         </div>
       </div>
 
@@ -187,14 +187,14 @@ export function ProfileView({ username, currentUserId }: ProfileViewProps) {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-border">
+      <div className="flex border-b border-border/50">
         {(["posts", "replies", "likes"] as Tab[]).map(t => (
           <button
             key={t} onClick={() => setTab(t)}
-            className={`flex-1 py-3 text-sm font-medium capitalize transition-colors relative ${tab === t ? "text-foreground" : "text-muted-foreground hover:bg-muted"}`}
+            className={`flex-1 py-3.5 text-sm font-semibold capitalize transition-all duration-200 relative ${tab === t ? "text-foreground" : "text-muted-foreground hover:bg-muted/50"}`}
           >
             {t}
-            {tab === t && <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-sky-500 rounded-full" />}
+            {tab === t && <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-1 bg-sky-500 rounded-full" />}
           </button>
         ))}
       </div>

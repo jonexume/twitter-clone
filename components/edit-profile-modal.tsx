@@ -51,19 +51,19 @@ export function EditProfileModal({ profile, onClose, onSave }: EditProfileModalP
   }
 
   const modal = (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4">
-      <div className="w-full max-w-lg bg-background rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+      <div className="w-full max-w-lg bg-background rounded-3xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden border border-border/50">
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border/50 shrink-0">
           <div className="flex items-center gap-4">
-            <button onClick={onClose} className="p-2 rounded-full hover:bg-muted transition-colors">
+            <button onClick={onClose} className="p-2 rounded-full hover:bg-muted transition-all duration-200 active:scale-95">
               <X className="h-5 w-5" />
             </button>
             <h2 className="font-bold text-lg">Edit profile</h2>
           </div>
           <button
             onClick={handleSave} disabled={saving}
-            className="rounded-full bg-foreground text-background px-5 py-1.5 text-sm font-bold hover:opacity-80 disabled:opacity-50 transition-opacity"
+            className="rounded-full bg-foreground text-background px-5 py-2 text-sm font-semibold hover:opacity-80 disabled:opacity-40 transition-all duration-200 active:scale-95 shadow-lg"
           >
             {saving ? "Saving…" : "Save"}
           </button>

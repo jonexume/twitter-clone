@@ -27,33 +27,33 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="w-full max-w-sm space-y-6 p-8">
-        <div className="flex flex-col items-center gap-2">
-          <Bird className="h-10 w-10 text-sky-500" />
-          <h1 className="text-2xl font-bold">Create your account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <div className="w-full max-w-sm space-y-6">
+        <div className="flex flex-col items-center gap-3">
+          <Bird className="h-12 w-12 text-sky-500" />
+          <h1 className="text-3xl font-bold tracking-tight">Create your account</h1>
         </div>
 
-        <form onSubmit={handleSignup} className="space-y-4">
+        <form onSubmit={handleSignup} className="space-y-3">
           <input
             type="text" value={username} onChange={e => setUsername(e.target.value)}
             placeholder="Username" required minLength={3} maxLength={20}
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full rounded-2xl border border-border bg-muted px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition-all duration-200"
           />
           <input
             type="email" value={email} onChange={e => setEmail(e.target.value)}
             placeholder="Email" required
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full rounded-2xl border border-border bg-muted px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition-all duration-200"
           />
           <input
             type="password" value={password} onChange={e => setPassword(e.target.value)}
             placeholder="Password (min 6 chars)" required minLength={6}
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full rounded-2xl border border-border bg-muted px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition-all duration-200"
           />
-          {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && <p className="text-sm text-red-500 font-medium">{error}</p>}
           <button
             type="submit" disabled={loading}
-            className="w-full rounded-full bg-sky-500 py-2.5 text-sm font-bold text-white hover:bg-sky-600 disabled:opacity-50 transition-colors"
+            className="w-full rounded-2xl bg-sky-500 hover:bg-sky-400 active:scale-[0.98] py-3 text-sm font-semibold text-white disabled:opacity-50 transition-all duration-200 shadow-lg shadow-sky-500/25"
           >
             {loading ? "Creating account…" : "Sign up"}
           </button>
@@ -61,7 +61,7 @@ export default function SignupPage() {
 
         <p className="text-center text-sm text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-sky-500 hover:underline">Sign in</Link>
+          <Link href="/auth/login" className="text-sky-500 font-semibold hover:underline">Sign in</Link>
         </p>
       </div>
     </div>

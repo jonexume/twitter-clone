@@ -2,29 +2,32 @@
 
 :root {
   --background: 255 255 255;
-  --foreground: 15 23 42;
-  --muted: 241 245 249;
-  --muted-foreground: 100 116 139;
-  --border: 226 232 240;
+  --foreground: 17 24 39;
+  --muted: 249 250 251;
+  --muted-foreground: 107 114 128;
+  --border: 229 231 235;
   --card: 255 255 255;
+  --accent: 59 130 246;
 }
 
 .dark {
   --background: 0 0 0;
-  --foreground: 236 240 241;
-  --muted: 21 32 43;
-  --muted-foreground: 139 152 165;
-  --border: 47 51 54;
-  --card: 21 32 43;
+  --foreground: 243 244 246;
+  --muted: 17 24 39;
+  --muted-foreground: 156 163 175;
+  --border: 31 41 55;
+  --card: 17 24 39;
+  --accent: 96 165 250;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
-}
-
-* {
-  border-color: rgb(var(--border));
 }
 
 .bg-background { background-color: rgb(var(--background)); }
@@ -33,3 +36,38 @@ body {
 .text-foreground { color: rgb(var(--foreground)); }
 .text-muted-foreground { color: rgb(var(--muted-foreground)); }
 .border-border { border-color: rgb(var(--border)); }
+
+/* Apple-style smooth scrolling */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--muted-foreground) / 0.5);
+}
+
+/* Smooth transitions */
+button, a, input, textarea {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus rings */
+*:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 2px;
+}

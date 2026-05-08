@@ -68,8 +68,8 @@ export function PostComposer({ userId, username, parentId, onPost }: PostCompose
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 p-4 border-b border-border">
-      <div className="h-10 w-10 rounded-full bg-sky-500 flex items-center justify-center text-white font-bold shrink-0">
+    <form onSubmit={handleSubmit} className="flex gap-3 px-4 py-3 border-b border-border">
+      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white font-bold shrink-0 shadow-sm">
         {username[0].toUpperCase()}
       </div>
       <div className="flex-1 space-y-3">
@@ -78,29 +78,29 @@ export function PostComposer({ userId, username, parentId, onPost }: PostCompose
           onChange={e => setContent(e.target.value)}
           placeholder={parentId ? "Post your reply…" : "What's happening?"}
           rows={3}
-          className="w-full resize-none bg-transparent text-lg outline-none placeholder:text-muted-foreground"
+          className="w-full resize-none bg-transparent text-[15px] leading-normal outline-none placeholder:text-muted-foreground"
         />
 
         {imagePreview && (
           <div className="relative w-fit">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imagePreview} alt="preview" className="max-h-64 rounded-2xl object-cover" />
+            <img src={imagePreview} alt="preview" className="max-h-64 rounded-2xl object-cover border border-border shadow-sm" />
             <button
               type="button" onClick={removeImage}
-              className="absolute top-2 right-2 bg-black/60 rounded-full p-1 hover:bg-black/80 transition-colors"
+              className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm rounded-full p-1.5 hover:bg-black/80 transition-all duration-200 shadow-lg"
             >
-              <X className="h-4 w-4 text-white" />
+              <X className="h-3.5 w-3.5 text-white" />
             </button>
           </div>
         )}
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between pt-1">
+          <div className="flex items-center gap-1">
             <button
               type="button" onClick={() => fileRef.current?.click()}
-              className="p-2 rounded-full hover:bg-sky-500/10 text-sky-500 transition-colors"
+              className="p-2 rounded-full hover:bg-sky-500/10 text-sky-500 transition-all duration-200 hover:scale-110"
             >
-              <ImageIcon className="h-5 w-5" />
+              <ImageIcon className="h-[18px] w-[18px]" />
             </button>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleImage} className="hidden" />
           </div>
@@ -109,17 +109,17 @@ export function PostComposer({ userId, username, parentId, onPost }: PostCompose
             {content.length > 0 && (
               <div className="relative h-8 w-8 flex items-center justify-center">
                 <svg className="absolute inset-0 -rotate-90" viewBox="0 0 32 32">
-                  <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-muted" />
+                  <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-muted opacity-20" />
                   <circle
                     cx="16" cy="16" r="12" fill="none" strokeWidth="2.5"
                     strokeDasharray={`${2 * Math.PI * 12}`}
                     strokeDashoffset={`${2 * Math.PI * 12 * Math.max(0, remaining) / MAX_CHARS}`}
-                    className={cn("transition-all", isOverLimit ? "text-red-500" : remaining <= 20 ? "text-yellow-500" : "text-sky-500")}
+                    className={cn("transition-all duration-300", isOverLimit ? "text-red-500" : remaining <= 20 ? "text-yellow-500" : "text-sky-500")}
                     stroke="currentColor"
                   />
                 </svg>
                 {remaining <= 20 && (
-                  <span className={cn("text-xs font-medium", isOverLimit ? "text-red-500" : "text-muted-foreground")}>
+                  <span className={cn("text-xs font-semibold", isOverLimit ? "text-red-500" : "text-muted-foreground")}>
                     {remaining}
                   </span>
                 )}
@@ -128,7 +128,7 @@ export function PostComposer({ userId, username, parentId, onPost }: PostCompose
             <button
               type="submit"
               disabled={isEmpty || isOverLimit || loading}
-              className="rounded-full bg-sky-500 px-5 py-2 text-sm font-bold text-white hover:bg-sky-600 disabled:opacity-50 transition-colors"
+              className="rounded-full bg-sky-500 hover:bg-sky-400 active:scale-95 px-5 py-2 text-sm font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40"
             >
               {loading ? "Posting…" : parentId ? "Reply" : "Post"}
             </button>
